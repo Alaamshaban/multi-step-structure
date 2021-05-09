@@ -1,0 +1,46 @@
+<mat-card>
+
+    <form [formGroup]="frmStepOne">
+        <div class="wrapper" fxLayoutWrap="10px">
+            <div class="form-body p5">
+                <div class="FormCell">
+                    <mat-form-field class="formField" appearance="outline">
+                        <input type="text" matInput formControlName="name" placeholder="Full name" />
+                        <mat-error *ngIf="frmStepOne.controls.name.hasError('pattern')">Name should be from 4-10 letters</mat-error>
+						<mat-error *ngIf="frmStepOne.controls.name.hasError('required')">Field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="FormCell">
+                    <mat-form-field class="formField" appearance="outline">
+                        <input [min]="minDate" [max]="maxDate" readonly matInput placeholder="Birth Date" formControlName="birth_date" [matDatepicker]="birth_date">
+                        <mat-datepicker-toggle matSuffix [for]="birth_date">
+                            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #birth_date></mat-datepicker>
+						<mat-error *ngIf="frmStepOne.controls.birth_date.hasError('required')">Field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="FormCell">
+                    <mat-form-field  class="formField" appearance="outline" id="school">
+                        <mat-label>School</mat-label>
+                        <mat-select name='school' formControlName="school">
+                            <mat-option *ngFor="let option of schools" [value]="option">{{option.name}}</mat-option>
+                        </mat-select>
+						<mat-error *ngIf="frmStepOne.controls.school.hasError('required')">Field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="FormCell">
+                    <mat-form-field class="formField" appearance="outline">
+                        <input type="text" matInput formControlName="id" placeholder="ID" />
+						<mat-error *ngIf="frmStepOne.controls.id.hasError('maxlength')">Max length should be 4 digits</mat-error>
+						<mat-error *ngIf="frmStepOne.controls.id.hasError('required')">Field is required</mat-error>
+                    </mat-form-field>
+				</div>
+            </div>
+        </div>
+		<mat-card-actions class="card-actions">
+			<button mat-raised-button (click)="submit()">Add</button>
+		</mat-card-actions>
+    </form>
+
+</mat-card>
