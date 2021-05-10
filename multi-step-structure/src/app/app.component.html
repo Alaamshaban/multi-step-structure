@@ -2,7 +2,6 @@
     <mat-step [completed]="frmStepOne?.valid" >
         <ng-template matStepLabel>Add Data</ng-template>
         <app-add #stepOneComponent (getTableData)="saveTableData($event)"></app-add>
-        {{frmStepOne?.valid}}
     </mat-step>
     <mat-step [stepControl]="frmStepTwo" optional>
         <ng-template matStepLabel>Design</ng-template>

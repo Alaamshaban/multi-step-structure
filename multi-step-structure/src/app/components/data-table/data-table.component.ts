@@ -7,7 +7,7 @@ import { DataModel } from 'src/app/models/data.model';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent {
-  displayedColumns: string[] = ['position', 'name', 'birthdate', 'school', 'id', 'actions'];
+  displayedColumns: string[] = ['position', 'name', 'birth_date', 'school', 'id', 'actions'];
   @Input() tableData: DataModel[];
   transformToJson = false;
   @Input() tableDataSource;
