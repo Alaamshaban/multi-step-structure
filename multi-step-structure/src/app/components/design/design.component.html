@@ -1,15 +1,46 @@
 <mat-card>
 
-	<form [formGroup]="frmStepTwo">
+    <form [formGroup]="frmStepTwo">
 
-        <mat-form-field>
-            <input matInput placeholder="Address" formControlName="address" required>
-        </mat-form-field>
-	
-  	<mat-card-actions>
-			<button mat-raised-button matStepperNext class="nav-btn pull-right">Next</button>
-		</mat-card-actions>
+        <div class="wrapper" fxLayoutWrap="10px">
+            <div class="form-body p5">
+                <div class="FormCell">
+                    <mat-label>Header</mat-label>
+                    <mat-form-field class="formField" appearance="outline" id="school">
+                        <mat-label>Font Color</mat-label>
+                        <mat-select name='headerColors' formControlName="headerFontColors">
+                            <mat-option *ngFor="let color of headerColors" [value]="color">{{color}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="formField" appearance="outline" id="school">
+                        <mat-label>Background Color</mat-label>
+                        <mat-select name='headerColors' formControlName="headerBackgroundColors">
+                            <mat-option *ngFor="let color of headerColors" [value]="color">{{color}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="FormCell">
+                    <mat-label>Row data</mat-label>
+                    <mat-form-field class="formField" appearance="outline" id="school">
+                        <mat-label>Font Color</mat-label>
+                        <mat-select name='rowColors' formControlName="rowFontColors">
+                            <mat-option *ngFor="let color of rowColors" [value]="color">{{color}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="formField" appearance="outline" id="school">
+                        <mat-label>Background Color</mat-label>
+                        <mat-select name='rowColors' formControlName="rowBackgroundColors">
+                            <mat-option *ngFor="let color of rowColors" [value]="color">{{color}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="stepper-actions">
+                    <button mat-button matStepperNext (click)="submit()">Next</button>
+                    <button mat-button matStepperPrevious>Back</button>
+                </div>
+            </div>
+        </div>
 
-	</form>
+    </form>
 
 </mat-card>

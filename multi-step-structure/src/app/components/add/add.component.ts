@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { School } from 'src/app/models/school.model';
 import { SchoolService } from 'src/app/services/get-schools.service';
@@ -13,6 +13,7 @@ export class AddComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   schools: School[];
+  @Output() getTableData = new EventEmitter();
 
   constructor(
     private schoolService: SchoolService,
@@ -29,7 +30,7 @@ export class AddComponent implements OnInit {
       name: ['', [Validators.required, Validators.pattern(validPattern)]],
       birth_date: ['', Validators.required],
       school: ['', Validators.required],
-      id: ['', Validators.maxLength(4)]
+      id: ['', [Validators.maxLength(4), Validators.required]]
     });
     this.fetchSchools();
   }
@@ -44,7 +45,7 @@ export class AddComponent implements OnInit {
     if (!this.frmStepOne.valid) {
       this.getFormErrors();
     } else {
-      console.log(this.frmStepOne.value)
+      this.getTableData.next(this.frmStepOne.value);
     }
   }
   getFormErrors() {

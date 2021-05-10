@@ -16,12 +16,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { DataTableComponent } from './components/data-table/data-table.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
     DesignComponent,
-    AddComponent
+    AddComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]

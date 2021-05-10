@@ -24,7 +24,7 @@
                     <mat-form-field  class="formField" appearance="outline" id="school">
                         <mat-label>School</mat-label>
                         <mat-select name='school' formControlName="school">
-                            <mat-option *ngFor="let option of schools" [value]="option">{{option.name}}</mat-option>
+                            <mat-option *ngFor="let option of schools" [value]="option.name">{{option.name}}</mat-option>
                         </mat-select>
 						<mat-error *ngIf="frmStepOne.controls.school.hasError('required')">Field is required</mat-error>
                     </mat-form-field>
@@ -39,7 +39,7 @@
             </div>
         </div>
 		<mat-card-actions class="card-actions">
-			<button mat-raised-button (click)="submit()">Add</button>
+			<button mat-raised-button matStepperNext (click)="submit()">Add</button>
 		</mat-card-actions>
     </form>
 
